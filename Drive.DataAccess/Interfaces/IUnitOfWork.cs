@@ -8,6 +8,7 @@ namespace Drive.DataAccess.Interfaces
 {
     interface IUnitOfWork : IDisposable
     {
+        IRepository<T> Repository<T>() where T : class;
         void SaveChanges();
     }
 }

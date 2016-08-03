@@ -43,7 +43,7 @@ namespace Drive.DataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public EFRepository<T> Repository<T>() where T : class
+        public IRepository<T> Repository<T>() where T : class
         {
             if (_repositories == null)
             {
