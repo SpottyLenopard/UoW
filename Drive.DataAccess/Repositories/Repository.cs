@@ -7,12 +7,12 @@ using Drive.DataAccess.Interfaces;
 
 namespace Drive.DataAccess.Repositories
 {
-    public class EFRepository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly DbContext _context;
         private IDbSet<T> _entities;
 
-        public EFRepository(DbContext context)
+        public Repository(DbContext context)
         {
             _context = context;
         }

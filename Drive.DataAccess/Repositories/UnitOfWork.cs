@@ -54,12 +54,12 @@ namespace Drive.DataAccess.Repositories
 
             if (!_repositories.ContainsKey(type))
             {
-                var repositoryType = typeof(EFRepository<>);
+                var repositoryType = typeof(Repository<>);
                 var repositoryInstance = Activator.CreateInstance(repositoryType.MakeGenericType(typeof(T)), _context);
                 _repositories.Add(type, repositoryInstance);
             }
 
-            return (EFRepository<T>)_repositories[type];
+            return (Repository<T>)_repositories[type];
         }
 
     }
