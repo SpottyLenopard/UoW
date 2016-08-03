@@ -8,7 +8,7 @@ using Drive.DataAccess.Interfaces;
 
 namespace Drive.DataAccess.Repositories
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly DbContext _context;
         private bool _isDisposed;
@@ -18,6 +18,10 @@ namespace Drive.DataAccess.Repositories
         {
             _context = context;
         }
+
+        //public UnitOfWork()
+        //{
+        //}
 
         public void Dispose()
         {
