@@ -17,12 +17,12 @@ namespace Drive.DataAccess.Repositories
             _context = context;
         }
 
-        public T GetById(object id)
+        public T GetById(int id)
         {
             return this.Entities.Find(id);
         }
 
-        public void Insert(T entity)
+        public void Create(T entity)
         {
             try
             {
@@ -55,10 +55,11 @@ namespace Drive.DataAccess.Repositories
             }
         }
 
-        public void Delete(T entity)
+        public void Delete(int id)
         {
             try
             {
+                var entity = GetById(id);
                 if (entity == null)
                 {
                     throw new ArgumentNullException("entity");
@@ -73,17 +74,19 @@ namespace Drive.DataAccess.Repositories
             }
         }
 
-        public IDbSet<T> Entities
+        public IEnumerable<T> GetAll()
+        {
+            return Entities;
+        }
+
+        private IDbSet<T> Entities
         {
             get
             {
-                if (_entities == null)
-                {
-                    _entities = _context.Set<T>();
-                }
-                return _entities;
+                return _entities ?? _context.Set<T>();
             }
         }
     }
 }
+
 
